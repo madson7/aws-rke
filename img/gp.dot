@@ -1,0 +1,105 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.ip_elastico (expand)" [label = "aws_eip.ip_elastico", shape = "box"]
+		"[root] aws_eip_association.eip_association (expand)" [label = "aws_eip_association.eip_association", shape = "box"]
+		"[root] aws_instance.admin (expand)" [label = "aws_instance.admin", shape = "box"]
+		"[root] aws_instance.master (expand)" [label = "aws_instance.master", shape = "box"]
+		"[root] aws_instance.worker (expand)" [label = "aws_instance.worker", shape = "box"]
+		"[root] aws_security_group.sg_private (expand)" [label = "aws_security_group.sg_private", shape = "box"]
+		"[root] aws_security_group.sg_public (expand)" [label = "aws_security_group.sg_public", shape = "box"]
+		"[root] data.template_file.script_admin (expand)" [label = "data.template_file.script_admin", shape = "box"]
+		"[root] data.template_file.script_cluster (expand)" [label = "data.template_file.script_cluster", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_eip.nat (expand)" [label = "module.vpc_and_subnet.aws_eip.nat", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_internet_gateway.igw-01 (expand)" [label = "module.vpc_and_subnet.aws_internet_gateway.igw-01", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_nat_gateway.ngw-01 (expand)" [label = "module.vpc_and_subnet.aws_nat_gateway.ngw-01", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_route_table.private (expand)" [label = "module.vpc_and_subnet.aws_route_table.private", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_route_table.public (expand)" [label = "module.vpc_and_subnet.aws_route_table.public", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-01 (expand)" [label = "module.vpc_and_subnet.aws_route_table_association.rta-01", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-02 (expand)" [label = "module.vpc_and_subnet.aws_route_table_association.rta-02", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_subnet.private (expand)" [label = "module.vpc_and_subnet.aws_subnet.private", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_subnet.public (expand)" [label = "module.vpc_and_subnet.aws_subnet.public", shape = "box"]
+		"[root] module.vpc_and_subnet.aws_vpc.main (expand)" [label = "module.vpc_and_subnet.aws_vpc.main", shape = "box"]
+		"[root] module.vpc_and_subnet.data.aws_availability_zones.available (expand)" [label = "module.vpc_and_subnet.data.aws_availability_zones.available", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/template\"]" [label = "provider[\"registry.terraform.io/hashicorp/template\"]", shape = "diamond"]
+		"[root] var.ami" [label = "var.ami", shape = "note"]
+		"[root] var.count_master" [label = "var.count_master", shape = "note"]
+		"[root] var.count_worker" [label = "var.count_worker", shape = "note"]
+		"[root] var.instance_type_master" [label = "var.instance_type_master", shape = "note"]
+		"[root] var.instance_type_worker" [label = "var.instance_type_worker", shape = "note"]
+		"[root] var.key_name" [label = "var.key_name", shape = "note"]
+		"[root] var.subnet_private_cidr_block" [label = "var.subnet_private_cidr_block", shape = "note"]
+		"[root] var.subnet_public_cidr_block" [label = "var.subnet_public_cidr_block", shape = "note"]
+		"[root] var.vpc_cidr_block" [label = "var.vpc_cidr_block", shape = "note"]
+		"[root] aws_eip.ip_elastico (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_eip_association.eip_association (expand)" -> "[root] aws_eip.ip_elastico (expand)"
+		"[root] aws_eip_association.eip_association (expand)" -> "[root] aws_instance.admin (expand)"
+		"[root] aws_instance.admin (expand)" -> "[root] aws_security_group.sg_public (expand)"
+		"[root] aws_instance.admin (expand)" -> "[root] data.template_file.script_admin (expand)"
+		"[root] aws_instance.admin (expand)" -> "[root] module.vpc_and_subnet.output.public_subnet_id (expand)"
+		"[root] aws_instance.master (expand)" -> "[root] aws_security_group.sg_private (expand)"
+		"[root] aws_instance.master (expand)" -> "[root] data.template_file.script_cluster (expand)"
+		"[root] aws_instance.master (expand)" -> "[root] module.vpc_and_subnet.output.private_subnet_id (expand)"
+		"[root] aws_instance.master (expand)" -> "[root] var.ami"
+		"[root] aws_instance.master (expand)" -> "[root] var.count_master"
+		"[root] aws_instance.master (expand)" -> "[root] var.instance_type_master"
+		"[root] aws_instance.master (expand)" -> "[root] var.key_name"
+		"[root] aws_instance.worker (expand)" -> "[root] aws_security_group.sg_private (expand)"
+		"[root] aws_instance.worker (expand)" -> "[root] data.template_file.script_cluster (expand)"
+		"[root] aws_instance.worker (expand)" -> "[root] module.vpc_and_subnet.output.private_subnet_id (expand)"
+		"[root] aws_instance.worker (expand)" -> "[root] var.ami"
+		"[root] aws_instance.worker (expand)" -> "[root] var.count_worker"
+		"[root] aws_instance.worker (expand)" -> "[root] var.instance_type_worker"
+		"[root] aws_instance.worker (expand)" -> "[root] var.key_name"
+		"[root] aws_security_group.sg_private (expand)" -> "[root] module.vpc_and_subnet.output.vpc_id (expand)"
+		"[root] aws_security_group.sg_public (expand)" -> "[root] module.vpc_and_subnet.output.vpc_id (expand)"
+		"[root] data.template_file.script_admin (expand)" -> "[root] aws_instance.master (expand)"
+		"[root] data.template_file.script_admin (expand)" -> "[root] aws_instance.worker (expand)"
+		"[root] data.template_file.script_cluster (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/template\"]"
+		"[root] module.vpc_and_subnet (close)" -> "[root] module.vpc_and_subnet.aws_route_table_association.rta-01 (expand)"
+		"[root] module.vpc_and_subnet (close)" -> "[root] module.vpc_and_subnet.aws_route_table_association.rta-02 (expand)"
+		"[root] module.vpc_and_subnet (close)" -> "[root] module.vpc_and_subnet.output.private_subnet_id (expand)"
+		"[root] module.vpc_and_subnet (close)" -> "[root] module.vpc_and_subnet.output.public_subnet_id (expand)"
+		"[root] module.vpc_and_subnet (close)" -> "[root] module.vpc_and_subnet.output.vpc_id (expand)"
+		"[root] module.vpc_and_subnet.aws_eip.nat (expand)" -> "[root] module.vpc_and_subnet (expand)"
+		"[root] module.vpc_and_subnet.aws_eip.nat (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.vpc_and_subnet.aws_internet_gateway.igw-01 (expand)" -> "[root] module.vpc_and_subnet.aws_vpc.main (expand)"
+		"[root] module.vpc_and_subnet.aws_nat_gateway.ngw-01 (expand)" -> "[root] module.vpc_and_subnet.aws_eip.nat (expand)"
+		"[root] module.vpc_and_subnet.aws_nat_gateway.ngw-01 (expand)" -> "[root] module.vpc_and_subnet.aws_subnet.public (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table.private (expand)" -> "[root] module.vpc_and_subnet.aws_nat_gateway.ngw-01 (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table.public (expand)" -> "[root] module.vpc_and_subnet.aws_internet_gateway.igw-01 (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-01 (expand)" -> "[root] module.vpc_and_subnet.aws_route_table.public (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-01 (expand)" -> "[root] module.vpc_and_subnet.aws_subnet.public (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-02 (expand)" -> "[root] module.vpc_and_subnet.aws_route_table.private (expand)"
+		"[root] module.vpc_and_subnet.aws_route_table_association.rta-02 (expand)" -> "[root] module.vpc_and_subnet.aws_subnet.private (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.private (expand)" -> "[root] module.vpc_and_subnet.aws_vpc.main (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.private (expand)" -> "[root] module.vpc_and_subnet.data.aws_availability_zones.available (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.private (expand)" -> "[root] module.vpc_and_subnet.var.subnet_private_cidr_block (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.public (expand)" -> "[root] module.vpc_and_subnet.aws_vpc.main (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.public (expand)" -> "[root] module.vpc_and_subnet.data.aws_availability_zones.available (expand)"
+		"[root] module.vpc_and_subnet.aws_subnet.public (expand)" -> "[root] module.vpc_and_subnet.var.subnet_public_cidr_block (expand)"
+		"[root] module.vpc_and_subnet.aws_vpc.main (expand)" -> "[root] module.vpc_and_subnet.var.vpc_cidr_block (expand)"
+		"[root] module.vpc_and_subnet.aws_vpc.main (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.vpc_and_subnet.data.aws_availability_zones.available (expand)" -> "[root] module.vpc_and_subnet (expand)"
+		"[root] module.vpc_and_subnet.data.aws_availability_zones.available (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.vpc_and_subnet.output.private_subnet_id (expand)" -> "[root] module.vpc_and_subnet.aws_subnet.private (expand)"
+		"[root] module.vpc_and_subnet.output.public_subnet_id (expand)" -> "[root] module.vpc_and_subnet.aws_subnet.public (expand)"
+		"[root] module.vpc_and_subnet.output.vpc_id (expand)" -> "[root] module.vpc_and_subnet.aws_vpc.main (expand)"
+		"[root] module.vpc_and_subnet.var.subnet_private_cidr_block (expand)" -> "[root] module.vpc_and_subnet (expand)"
+		"[root] module.vpc_and_subnet.var.subnet_private_cidr_block (expand)" -> "[root] var.subnet_private_cidr_block"
+		"[root] module.vpc_and_subnet.var.subnet_public_cidr_block (expand)" -> "[root] module.vpc_and_subnet (expand)"
+		"[root] module.vpc_and_subnet.var.subnet_public_cidr_block (expand)" -> "[root] var.subnet_public_cidr_block"
+		"[root] module.vpc_and_subnet.var.vpc_cidr_block (expand)" -> "[root] module.vpc_and_subnet (expand)"
+		"[root] module.vpc_and_subnet.var.vpc_cidr_block (expand)" -> "[root] var.vpc_cidr_block"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_eip_association.eip_association (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.vpc_and_subnet.aws_route_table_association.rta-01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.vpc_and_subnet.aws_route_table_association.rta-02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/template\"] (close)" -> "[root] data.template_file.script_admin (expand)"
+		"[root] root" -> "[root] module.vpc_and_subnet (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/template\"] (close)"
+	}
+}
+

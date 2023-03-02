@@ -22,12 +22,12 @@ variable "ami" {
 
 variable "instance_type_master" {
   description = "Instance type master"
-  default = "t2.xlarge"
+  default = "t2.micro"
 }
 
 variable "instance_type_worker" {
   description = "Instance type worker"
-  default = "t2.xlarge"
+  default = "t2.micro"
 }
 
 variable "count_master" {

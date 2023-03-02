@@ -1,5 +1,7 @@
 ## Configurando um provedor de nuvem AWS para prover um cluster Kubernetes usando Terraform, RKE e Ansible
 
+![get nodes](./img/diagrama.png)
+
 Este post demonstra como criar e configurar um provedor de nuvem Amazon Web Services (AWS) usando terraform. Os recursos provisionados incluem redes, instâncias e grupos de segurança, fornecendo uma infraestrutura completa.
 
 Além disso, o cluster Kubernetes é implementado usando o Rancher Kubernetes Engine (RKE) por template_file, user_data e um toque de ansible. Com essa abordagem, é possível criar um cluster Kubernetes altamente disponível e escalável.
@@ -94,6 +96,8 @@ kubectl get service nginx
 ```
 ![get nodes](./img/getservice.png)
 
+Custos estimados
+![get nodes](./img/infracost.png)
 
 Links úteis:
 
