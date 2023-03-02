@@ -97,6 +97,10 @@ kubectl get service nginx
 ![get nodes](./img/getservice.png)
 
 Custos estimados
+```
+infracost breakdown --path=.
+```
+
 ![get nodes](./img/infracost.png)
 
 Links úteis:
@@ -112,3 +116,5 @@ https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deplo
 https://github.com/madson7/ansible-roles-templates
 
 https://github.com/madson7/terraform-modules
+
+https://www.linkedin.com/pulse/configurando-um-provedor-de-nuvem-aws-para-prover-cluster-ramos
