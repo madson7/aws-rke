@@ -13,8 +13,6 @@ variable "subnet_private_cidr_block" {
   default = "10.45.2.0/24"
 }
 
-
-
 variable "ami" {
   description = "Canonical, Ubuntu, 22.04 LTS, amd64 jammy image build on 2023-02-08"
   default = "ami-0557a15b87f6559cf"
@@ -22,12 +20,12 @@ variable "ami" {
 
 variable "instance_type_master" {
   description = "Instance type master"
-  default = "t2.micro"
+  default = "c3.xlarge"
 }
 
 variable "instance_type_worker" {
   description = "Instance type worker"
-  default = "t2.micro"
+  default = "c3.xlarge"
 }
 
 variable "count_master" {

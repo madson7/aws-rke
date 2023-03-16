@@ -1,6 +1,6 @@
 apt update
 
-apt install -y ansible
+apt install -y ansible curl wget
 
 snap install kubectl --classic
 
@@ -56,6 +56,8 @@ EOF
 cat >> /opt/config/worker_ips.txt <<EOF
 ${WORKER_IPS}
 EOF
+
+hostname -I >> /opt/config/proxy_ips.txt
 
 wget -O /opt/config/rke https://github.com/rancher/rke/releases/download/v1.4.1/rke_linux-amd64
 
@@ -327,11 +329,25 @@ worker-$IP ansible_host=$IP
 EOF
 done
 
+echo "[proxy]" >> /opt/config/ansible/inventario.ini
+
+for IP in $(grep -E '.' /opt/config/proxy_ips.txt | tr ',' ' ' | tr '[[' ' ' | tr ']]' ' ' | cut -d: -f1); do
+    cat >> /opt/config/ansible/inventario.ini <<EOF
+proxy-$IP ansible_host=$IP
+EOF
+done
+
 cat >> /opt/config/ansible/inventario.ini <<EOF
 
 [docker:children]
 master
 worker
+EOF
+
+cat >> /opt/config/ansible/inventario.ini <<EOF
+
+[nginx:children]
+proxy
 EOF
 
 ansible-playbook -i /opt/config/ansible/inventario.ini /opt/config/ansible/main.yml > /opt/config/ansible_log.log

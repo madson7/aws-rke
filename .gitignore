@@ -1,7 +1,10 @@
 # Local .terraform directories
 **/.terraform/*
 
+#edit
 provider.tf
+.terraform.lock.hcl
+saida_plan.*
 
 # .tfstate files
 *.tfstate

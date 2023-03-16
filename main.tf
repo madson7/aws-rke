@@ -22,6 +22,14 @@ resource "aws_security_group" "sg_public" {
   description = "Grupo de seguranca para acesso SSH e HTTPS"
   vpc_id = module.vpc_and_subnet.vpc_id
 
+  # provisório
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     from_port = 22
     to_port = 22
