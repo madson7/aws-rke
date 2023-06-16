@@ -1,6 +1,7 @@
 ## Configurando um provedor de nuvem AWS para prover um cluster Kubernetes usando Terraform, RKE e Ansible
 
 ![get nodes](./img/diagrama.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmadson7%2Faws-rke.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmadson7%2Faws-rke?ref=badge_shield)
 
 Este post demonstra como criar e configurar um provedor de nuvem Amazon Web Services (AWS) usando terraform. Os recursos provisionados incluem redes, instâncias e grupos de segurança, fornecendo uma infraestrutura completa.
 
@@ -118,3 +119,7 @@ https://github.com/madson7/ansible-roles-templates
 https://github.com/madson7/terraform-modules
 
 https://www.linkedin.com/pulse/configurando-um-provedor-de-nuvem-aws-para-prover-cluster-ramos
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmadson7%2Faws-rke.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmadson7%2Faws-rke?ref=badge_large)
